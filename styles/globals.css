@@ -177,6 +177,21 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
 .hero .stat:has(strong:only-child) strong{font-size:clamp(1.28rem,1.8vw,1.72rem)}
 @media(max-width:980px){.hero .hero-card{justify-self:stretch;max-width:none}.hero .logo-panel{min-height:300px}}
 
+/* Homepage checklist cleanup */
+.check b{flex:0 0 28px;width:28px;height:28px;border-radius:999px;background:rgba(237,28,42,.1);display:grid;place-items:center;font-size:0;color:var(--red);line-height:1;margin-top:1px}
+.check b:before{content:"\2713";font-size:1rem;font-weight:950}
+.check span{line-height:1.45;overflow-wrap:normal}
+@media(max-width:640px){
+  .section.alt .split{gap:26px!important}
+  .section.alt .photo-block.real-photo{margin-bottom:4px!important}
+  .section.alt .eyebrow{margin-bottom:10px!important}
+  .section.alt h2{margin-bottom:18px!important}
+  .section.alt p.sub{margin-top:0!important;margin-bottom:24px!important;line-height:1.58!important}
+  .section.alt .checklist{gap:14px!important;margin-top:0!important}
+  .section.alt .check{align-items:flex-start!important;gap:14px!important;padding:18px 18px!important;border-radius:20px!important}
+  .section.alt .check b{flex-basis:30px;width:30px;height:30px;margin-top:0}
+}
+
 /* Training Info mobile hero tightening */
 @media(max-width:640px){
   .programs-hero-copy{max-width:none}
