@@ -145,9 +145,13 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
 /* Final large-phone guard: prevent clipped header/actions on iPhone Pro Max previews */
 @media(max-width:480px){
   .wrap{width:calc(100% - 34px)!important;max-width:396px!important}
-  .mobile-contact{max-width:116px!important;min-height:38px!important;padding:9px 14px!important;font-size:.82rem!important;overflow:hidden!important;white-space:nowrap!important}
-  .navlinks{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important;font-size:.8rem!important;overflow:visible!important}
-  .navlinks>a:not(.cta),.dropdown-toggle{min-width:0!important;padding:9px 3px!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  .topbar{background:rgba(255,255,255,.96)!important}
+  .nav{display:grid!important;grid-template-columns:52px 1fr!important;grid-template-rows:auto!important;gap:10px!important;align-items:center!important;padding:8px 0!important}
+  .brand{grid-column:1!important;grid-row:1!important}.brand img{width:52px!important;height:44px!important}
+  .mobile-contact{display:none!important}
+  .navlinks{grid-column:2!important;grid-row:1!important;width:auto!important;display:flex!important;justify-content:flex-end!important;align-items:center!important;gap:10px!important;font-size:.75rem!important;line-height:1!important;overflow:visible!important}
+  .navlinks>a:not(.cta),.dropdown-toggle{min-width:0!important;min-height:auto!important;padding:0!important;white-space:nowrap!important;overflow:visible!important;text-overflow:clip!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#25365f!important;font-weight:850!important}
+  .navlinks>a.cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:34px!important;padding:8px 13px!important;border-radius:999px!important;font-size:.76rem!important;white-space:nowrap!important;box-shadow:0 10px 20px rgba(237,28,42,.18)!important}
   .actions{grid-template-columns:1fr!important;max-width:310px!important}
   .actions .btn{white-space:normal!important;line-height:1.15!important}
   .hero h1,.program-detail-grid h1,.article-head h1,.signup-hero h1,.coaches-hero h1,.programs-story-hero h1{font-size:clamp(2.05rem,10.2vw,2.75rem)!important}
