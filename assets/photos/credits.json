@@ -1,0 +1,42 @@
+[
+  {
+    "file": "assets/photos/one-meter.jpg",
+    "alt": "1-meter springboard diver",
+    "original": "https://commons.wikimedia.org/wiki/File:2017_European_Diving_Championships_-_1m_Springboard_Women_-_Final_02.jpg",
+    "author": "Visem",
+    "license": "CC BY-SA 4.0",
+    "source": "Wikimedia Commons"
+  },
+  {
+    "file": "assets/photos/three-meter.jpg",
+    "alt": "3-meter springboard diver",
+    "original": "https://commons.wikimedia.org/wiki/File:2018-10-14_Jump_1_(Diving_Boys_3m_springboard)_at_2018_Summer_Youth_Olympics_by_Sandro_Halank\u2013023.jpg",
+    "author": "Sandro Halank",
+    "license": "CC BY-SA 4.0",
+    "source": "Wikimedia Commons"
+  },
+  {
+    "file": "assets/photos/platform.jpg",
+    "alt": "diving pool with high platforms",
+    "original": "https://commons.wikimedia.org/wiki/File:Diving_pool_with_diving_boards_and_high_diving_platforms.jpg",
+    "author": "Brisbane City Council",
+    "license": "CC BY 2.0",
+    "source": "Wikimedia Commons"
+  },
+  {
+    "file": "assets/photos/team-synchro.jpg",
+    "alt": "synchronized diving",
+    "original": "https://commons.wikimedia.org/wiki/File:2018-02-18_3m_mixed_synchronized_finals_(IDHM_Rostock_2018)_by_Sandro_Halank\u2013021.jpg",
+    "author": "Sandro Halank",
+    "license": "CC BY-SA 3.0",
+    "source": "Wikimedia Commons"
+  },
+  {
+    "file": "assets/photos/facility.jpg",
+    "alt": "indoor diving pool with springboards and platform",
+    "original": "https://commons.wikimedia.org/wiki/File:Indoor_Swimming_Pool_with_Diving_Platform_and_Springboards.JPG",
+    "author": "localfitness.com.au",
+    "license": "CC BY-SA 3.0",
+    "source": "Wikimedia Commons"
+  }
+]

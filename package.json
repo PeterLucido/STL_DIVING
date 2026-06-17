@@ -1,0 +1,21 @@
+{
+  "name": "stl-diving-nextjs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -H 127.0.0.1 -p 8877",
+    "build": "next build",
+    "start": "next start -H 127.0.0.1 -p 8877"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "latest",
+    "typescript": "6.0.3"
+  }
+}
