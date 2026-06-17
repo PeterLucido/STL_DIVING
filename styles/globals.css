@@ -178,7 +178,7 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
 @media(max-width:980px){.hero .hero-card{justify-self:stretch;max-width:none}.hero .logo-panel{min-height:300px}}
 
 /* Homepage checklist cleanup */
-.check b{flex:0 0 54px;width:54px;border-radius:999px;background:rgba(237,28,42,.08);display:grid;place-items:center;color:var(--red);font-size:.8rem;font-weight:950;line-height:1;white-space:nowrap;overflow-wrap:normal;margin-top:2px;padding:8px 10px}
+.check b{flex:0 0 58px;width:58px;min-height:42px;border-radius:14px;background:rgba(237,28,42,.08);display:grid;place-items:center;color:var(--red);font-size:.84rem;font-weight:950;line-height:1;white-space:nowrap;overflow-wrap:normal;margin:0;padding:10px 12px}
 .check span{line-height:1.45;overflow-wrap:normal}
 @media(max-width:640px){
   .section.alt .split{gap:26px!important}
@@ -187,8 +187,9 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
   .section.alt h2{margin-bottom:18px!important}
   .section.alt p.sub{margin-top:0!important;margin-bottom:24px!important;line-height:1.58!important}
   .section.alt .checklist{gap:14px!important;margin-top:0!important}
-  .section.alt .check{align-items:flex-start!important;gap:14px!important;padding:18px 18px!important;border-radius:20px!important}
-  .section.alt .check b{flex-basis:56px;width:56px;margin-top:1px}
+  .section.alt .check{display:grid!important;grid-template-columns:64px 1fr!important;align-items:center!important;gap:14px!important;padding:20px 18px!important;border-radius:20px!important;min-height:112px!important}
+  .section.alt .check b{width:64px!important;min-height:46px!important;align-self:center!important;justify-self:center!important}
+  .section.alt .check span{align-self:center!important}
 }
 
 /* Training Info mobile hero tightening */
