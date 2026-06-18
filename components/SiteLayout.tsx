@@ -21,7 +21,7 @@ export default function SiteLayout({ title, description, children }: Props) {
         <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
       </Head>
       <Header />
-      {children}
+      <div className="site-content">{children}</div>
       <Footer />
     </>
   );

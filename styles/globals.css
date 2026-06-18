@@ -182,7 +182,8 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
 .topbar{transition:transform .22s ease,box-shadow .22s ease}
 .topbar.is-hidden{transform:translateY(-110%)}
 @media(max-width:640px){
-  .topbar{background:rgba(255,255,255,.96)!important}
+  .site-content{padding-top:64px}
+  .topbar{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important;background:rgba(255,255,255,.96)!important}
   .nav{display:grid!important;grid-template-columns:auto auto!important;grid-template-rows:auto auto!important;align-items:center!important;gap:0 14px!important;min-height:0!important;padding:9px 0!important}
   .brand{grid-column:1!important;grid-row:1!important}
   .brand img{width:58px!important;height:46px!important}
