@@ -4,18 +4,65 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerHidden, setHeaderHidden] = useState(false);
   const lastScrollY = useRef(0);
+  const lastTouchY = useRef<number | null>(null);
+  const ticking = useRef(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const scrollingDown = currentScrollY > lastScrollY.current;
+    lastScrollY.current = window.scrollY;
 
-      setHeaderHidden(scrollingDown && currentScrollY > 120 && !menuOpen);
-      lastScrollY.current = currentScrollY;
+    const showHeader = () => {
+      setHeaderHidden(false);
+    };
+
+    const handleScroll = () => {
+      if (ticking.current) return;
+
+      ticking.current = true;
+      window.requestAnimationFrame(() => {
+        const currentScrollY = Math.max(window.scrollY, 0);
+        const scrollDelta = currentScrollY - lastScrollY.current;
+
+        if (menuOpen || currentScrollY < 24 || scrollDelta < -2) {
+          setHeaderHidden(false);
+        } else if (scrollDelta > 8 && currentScrollY > 96) {
+          setHeaderHidden(true);
+        }
+
+        lastScrollY.current = currentScrollY;
+        ticking.current = false;
+      });
+    };
+
+    const handleWheel = (event: WheelEvent) => {
+      if (event.deltaY < 0) showHeader();
+    };
+
+    const handleTouchStart = (event: TouchEvent) => {
+      lastTouchY.current = event.touches[0]?.clientY ?? null;
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      const currentTouchY = event.touches[0]?.clientY;
+      if (currentTouchY == null || lastTouchY.current == null) return;
+
+      if (currentTouchY - lastTouchY.current > 3) {
+        showHeader();
+      }
+
+      lastTouchY.current = currentTouchY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
   }, [menuOpen]);
 
   return (
