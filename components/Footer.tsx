@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="wrap footer-simple">
         <b>STL Diving</b>
-        <a className="small" href="/photo-credits">Photo credits</a>
+        <div className="small">2026 STL Diving. All rights reserved.</div>
       </div>
     </footer>
   );
