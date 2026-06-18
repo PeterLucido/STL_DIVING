@@ -179,6 +179,8 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
 
 /* Expandable mobile header */
 .menu-toggle{display:none}
+.topbar{transition:transform .22s ease,box-shadow .22s ease}
+.topbar.is-hidden{transform:translateY(-110%)}
 @media(max-width:640px){
   .topbar{background:rgba(255,255,255,.96)!important}
   .nav{display:grid!important;grid-template-columns:auto auto!important;grid-template-rows:auto auto!important;align-items:center!important;gap:0 14px!important;min-height:0!important;padding:9px 0!important}

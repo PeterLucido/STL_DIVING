@@ -1,10 +1,25 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [headerHidden, setHeaderHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY.current;
+
+      setHeaderHidden(scrollingDown && currentScrollY > 120 && !menuOpen);
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [menuOpen]);
 
   return (
-    <header className="topbar">
+    <header className={`topbar${headerHidden ? " is-hidden" : ""}`}>
       <div className="wrap nav">
         <a className="brand" href="/">
           <img alt="STL Diving logo" src="/assets/stl-diving-logo-transparent.png" />
