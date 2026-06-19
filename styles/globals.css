@@ -231,3 +231,12 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
   .footer{padding:26px 0}
   .footer-simple{display:flex!important;text-align:left!important}
 }
+
+/* Contact page detail rows */
+.contact-panel .check{align-items:center;gap:16px;min-height:72px;padding:16px 18px}
+.contact-panel .check b{flex:0 0 96px;width:96px;min-height:0;border-radius:0;background:transparent;display:block;padding:0;color:var(--red);font-size:.9rem;font-weight:950;line-height:1;text-align:left}
+.contact-panel .check span{color:var(--ink);font-size:1rem;line-height:1.35;overflow-wrap:normal}
+@media(max-width:640px){
+  .contact-panel .check{gap:12px;min-height:66px;padding:15px 16px}
+  .contact-panel .check b{flex-basis:82px;width:82px}
+}
