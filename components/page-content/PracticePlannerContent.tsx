@@ -1,17 +1,17 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import {
+  buildPracticeDays,
+  loadPracticeScheduleEntries,
+  PracticeDay,
+  PracticeScheduleEntry,
+  savePracticeScheduleEntry,
+} from "../../lib/practiceSchedule";
 
 type PlannerProfile = {
   parentName: string;
   athleteName: string;
   email: string;
   phone: string;
-};
-
-type PracticeDay = {
-  key: string;
-  label: string;
-  weekday: string;
-  monthDay: string;
 };
 
 const initialProfile: PlannerProfile = {
@@ -23,36 +23,6 @@ const initialProfile: PlannerProfile = {
 
 const timeOptions = ["5:30 PM", "6:30 PM", "7:30 PM"];
 
-function buildPracticeDays() {
-  const days: PracticeDay[] = [];
-  const formatter = new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-  });
-
-  for (let offset = 0; days.length < 12 && offset < 28; offset += 1) {
-    const date = new Date();
-    date.setHours(12, 0, 0, 0);
-    date.setDate(date.getDate() + offset);
-
-    const day = date.getDay();
-    if (day === 0 || day === 6) continue;
-
-    days.push({
-      key: date.toISOString().slice(0, 10),
-      label: date.toLocaleDateString("en-US", {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-      }),
-      weekday: date.toLocaleDateString("en-US", { weekday: "short" }),
-      monthDay: formatter.format(date),
-    });
-  }
-
-  return days;
-}
-
 export default function PracticePlannerContent() {
   const [profile, setProfile] = useState<PlannerProfile>(initialProfile);
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -60,15 +30,22 @@ export default function PracticePlannerContent() {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState(timeOptions[0]);
   const [visitType, setVisitType] = useState("Free intro session");
+  const [message, setMessage] = useState("");
+  const [scheduleEntries, setScheduleEntries] = useState<PracticeScheduleEntry[]>([]);
   const selectedDay = useMemo(
     () => practiceDays.find((day) => day.key === selectedDate),
     [practiceDays, selectedDate]
+  );
+  const selectedDayEntries = useMemo(
+    () => scheduleEntries.filter((entry) => entry.dateKey === selectedDate),
+    [scheduleEntries, selectedDate]
   );
 
   useEffect(() => {
     const days = buildPracticeDays();
     setPracticeDays(days);
     setSelectedDate(days[0]?.key ?? "");
+    setScheduleEntries(loadPracticeScheduleEntries());
 
     const savedProfile = window.localStorage.getItem("stl-practice-planner-profile");
     if (!savedProfile) return;
@@ -98,6 +75,26 @@ export default function PracticePlannerContent() {
     setIsSignedIn(false);
   };
 
+  const handleScheduleSubmit = () => {
+    if (!isSignedIn || !selectedDate) return;
+
+    const entry = savePracticeScheduleEntry({
+      id: `${Date.now()}-${profile.email}`,
+      parentName: profile.parentName,
+      athleteName: profile.athleteName,
+      email: profile.email,
+      phone: profile.phone,
+      visitType,
+      dateKey: selectedDate,
+      dateLabel: selectedDay?.label ?? selectedDate,
+      time: selectedTime,
+      message,
+      createdAt: new Date().toISOString(),
+    });
+
+    setScheduleEntries(entry);
+  };
+
   return (
     <main>
       <section className="planner-hero">
@@ -115,6 +112,9 @@ export default function PracticePlannerContent() {
               <b>Dive Calendar</b>
               <b>BoardTime</b>
               <b>Practice Check-In</b>
+            </div>
+            <div className="actions planner-admin-action">
+              <a className="btn" href="/practice-admin">Coach calendar</a>
             </div>
           </div>
           <aside className="planner-login-card">
@@ -207,9 +207,26 @@ export default function PracticePlannerContent() {
                 </select>
               </label>
             </div>
+            <div className="day-roster-card">
+              <div className="planner-card-head">
+                <span>Who is coming {selectedDay ? `on ${selectedDay.monthDay}` : "that day"}</span>
+              </div>
+              {selectedDayEntries.length ? (
+                <div className="day-roster-list">
+                  {selectedDayEntries.map((entry) => (
+                    <div className="roster-row" key={entry.id}>
+                      <b>{entry.athleteName}</b>
+                      <span>{entry.time} · {entry.visitType}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="fine-print">No one is listed yet for this day.</p>
+              )}
+            </div>
           </div>
 
-          <form className="form planner-submit-card" action="https://formsubmit.co/info@stldiving.com" method="POST">
+          <form className="form planner-submit-card" action="https://formsubmit.co/info@stldiving.com" method="POST" onSubmit={handleScheduleSubmit}>
             <input name="_subject" type="hidden" value="STL Diving Practice Planner" />
             <input name="_template" type="hidden" value="table" />
             <input name="_captcha" type="hidden" value="false" />
@@ -231,6 +248,8 @@ export default function PracticePlannerContent() {
             <label>Anything coaches should know?</label>
             <textarea
               name="message"
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
               placeholder="Age, experience, goals, or any timing details..."
             ></textarea>
             <button className="btn red" disabled={!isSignedIn || !selectedDate} type="submit">

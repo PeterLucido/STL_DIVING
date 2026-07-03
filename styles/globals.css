@@ -254,7 +254,7 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
 .planner-card-head button{border:1px solid rgba(34,63,153,.14);background:#f4f8ff;color:var(--blue);border-radius:999px;padding:8px 12px;font-weight:900;cursor:pointer}
 .planner-login-form{display:grid;gap:8px}
 .planner-login-form label,.planner-options label{font-size:.88rem;font-weight:900;color:#34405a}
-.planner-login-form input,.planner-options select{width:100%;padding:13px 14px;border:1px solid #d7deeb;border-radius:16px;background:#fbfdff;font:inherit}
+.planner-login-form input,.planner-login-form select,.planner-options select{width:100%;padding:13px 14px;border:1px solid #d7deeb;border-radius:16px;background:#fbfdff;font:inherit}
 .planner-profile-summary{display:grid;gap:8px;padding:20px;border-radius:22px;background:linear-gradient(135deg,#eef6ff,#fff);border:1px solid rgba(34,63,153,.12)}
 .planner-profile-summary strong{color:var(--blue2);font-size:1.35rem}
 .planner-profile-summary span{color:#52617c;font-weight:750}
@@ -264,8 +264,9 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
 .practice-day{min-height:96px;border:1px solid rgba(34,63,153,.14);border-radius:20px;background:#fff;box-shadow:0 12px 28px rgba(13,32,77,.07);display:grid;place-items:center;padding:14px;cursor:pointer;color:var(--blue2)}
 .practice-day span{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;font-weight:950;color:#6b7891}
 .practice-day strong{font-size:1.35rem;line-height:1;color:var(--blue2)}
+.practice-day em{font-style:normal;font-size:.78rem;font-weight:900;color:#6b7891}
 .practice-day.is-selected{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 18px 36px rgba(34,63,153,.22)}
-.practice-day.is-selected span,.practice-day.is-selected strong{color:#fff}
+.practice-day.is-selected span,.practice-day.is-selected strong,.practice-day.is-selected em{color:#fff}
 .planner-options{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
 .planner-options label{display:grid;gap:8px}
 .planner-submit-card h2{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.02;margin:12px 0 16px;color:var(--blue2);letter-spacing:-.04em}
@@ -274,14 +275,26 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
 .planner-summary-list b{color:var(--blue2)}
 .planner-summary-list span{color:#52617c;font-weight:800;text-align:right}
 .planner-submit-card .btn:disabled{opacity:.55;cursor:not-allowed}
+.day-roster-card{margin-top:18px;padding:18px;border-radius:24px;background:#fff;border:1px solid rgba(34,63,153,.11);box-shadow:0 12px 28px rgba(13,32,77,.07)}
+.day-roster-list,.admin-roster-list{display:grid;gap:10px}
+.roster-row,.admin-roster-entry{padding:14px;border-radius:18px;background:#f5f9ff;border:1px solid rgba(34,63,153,.09)}
+.roster-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.roster-row b,.admin-roster-entry b{color:var(--blue2)}
+.roster-row span,.admin-roster-entry span{color:#52617c;font-weight:800}
+.admin-roster-card{position:sticky;top:108px}
+.admin-roster-entry div{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.admin-roster-entry p{margin:9px 0 0;color:#5d6b86;line-height:1.45}
+.error-text{color:var(--red)!important}
 @media(max-width:850px){
   .planner-hero-grid,.planner-grid{grid-template-columns:1fr}
   .planner-hero-grid{padding:48px 0}
   .practice-day-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .admin-roster-card{position:static}
 }
 @media(max-width:520px){
   .practice-day-grid,.planner-options{grid-template-columns:1fr 1fr}
   .planner-login-card,.planner-submit-card{padding:22px;border-radius:24px}
   .planner-summary-list div{display:grid;gap:4px}
   .planner-summary-list span{text-align:left}
+  .roster-row,.admin-roster-entry div{display:grid;gap:4px}
 }
