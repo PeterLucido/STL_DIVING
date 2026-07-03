@@ -86,6 +86,7 @@ export default function Header() {
         <nav className={`navlinks${menuOpen ? " is-open" : ""}`} id="site-navigation">
           <a href="/">Home</a>
           <a href="/programs">Training Info</a>
+          <a href="/practice-planner">Schedule</a>
           <a href="/coaches">Coaches</a>
           <a href="/signup">Sign Up</a>
           <a className="cta" href="/contact">Contact</a>
