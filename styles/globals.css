@@ -565,6 +565,92 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
   .practice-row-date{border-right:0;border-bottom:1px solid #dfe5f1;padding:0 0 10px}
 }
 
+@media(max-width:760px){
+  .athlete-portal,.coach-portal{height:auto;min-height:calc(100dvh - 64px);overflow:visible}
+  .athlete-portal{display:block}
+  .athlete-portal-sidebar{display:block;border-right:0;border-bottom:1px solid rgba(34,63,153,.12);min-height:0;overflow:visible}
+  .athlete-portal-brand{padding:18px}
+  .athlete-portal-brand h1{font-size:1.45rem;margin:10px 0 6px}
+  .athlete-sidebar-section{padding:16px 18px;overflow:visible}
+  .athlete-list{display:flex;gap:10px;overflow-x:auto;margin-top:12px;padding-bottom:4px}
+  .athlete-list button{min-width:180px}
+  .athlete-add-inline{grid-template-columns:minmax(0,1fr) 44px;margin-top:12px}
+  .athlete-add-inline button{min-height:44px}
+  .athlete-portal-main{display:block;overflow:visible}
+  .athlete-portal-topbar{position:sticky;top:64px;z-index:10;display:grid;grid-template-columns:1fr;min-height:0;padding:16px 18px;gap:14px}
+  .athlete-portal-topbar h1{font-size:1.35rem}
+  .athlete-topbar-actions{grid-template-columns:1fr;justify-content:stretch;gap:12px}
+  .athlete-topbar-actions .portal-kicker{white-space:normal}
+  .athlete-view-toggle{width:100%}
+  .athlete-view-toggle button{flex:1}
+  .athlete-month-nav{grid-template-columns:42px minmax(0,1fr) 42px;width:100%;gap:8px}
+  .athlete-month-nav b{font-size:1.08rem}
+  .athlete-month-nav button{width:42px;height:42px;border:1px solid #dbe2ef;border-radius:12px;background:#fff}
+  .athlete-portal-content{display:block;overflow:visible}
+  .athlete-schedule-list{display:block;padding:16px 18px;overflow:visible}
+  .athlete-calendar-head{align-items:flex-start;flex-direction:column;gap:10px;margin-bottom:12px}
+  .athlete-calendar-scroll{max-height:none;overflow:visible;margin:0;padding:0}
+  .athlete-calendar-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .athlete-calendar-card{min-height:164px;padding:16px;border-radius:18px}
+  .athlete-calendar-card strong{font-size:2.6rem;margin-top:10px}
+  .athlete-calendar-card i{min-height:30px;margin-top:16px}
+  .athlete-calendar-card i b{width:30px;height:30px;font-size:.72rem}
+  .athlete-calendar-card small{right:16px;bottom:18px;font-size:.95rem}
+  .athlete-calendar-card.is-active:after{right:12px;top:12px}
+  .athlete-timeline{gap:12px;padding-left:0}
+  .athlete-timeline:before,.timeline-node{display:none}
+  .athlete-day-attendance{grid-template-columns:98px 1fr;min-height:0;margin-bottom:14px;border-radius:18px}
+  .athlete-day-attendance-date{padding:18px;border-right:1px solid #dfe5f1;border-bottom:0}
+  .athlete-day-attendance-date strong{font-size:2.6rem}
+  .athlete-day-attendance-list{padding:18px}
+  .athlete-practice-row{grid-template-columns:84px 1fr auto;gap:12px;min-height:74px;padding:14px 16px;border-radius:16px}
+  .athlete-practice-row.is-active,.athlete-practice-row.is-active.is-attending{padding-right:118px}
+  .practice-row-date{padding-right:12px}
+  .practice-row-date strong{font-size:1.2rem}
+  .practice-row-attendees b{width:32px;height:32px}
+  .practice-row-check{right:18px}
+  .athlete-practice-row.is-active.is-attending:after{right:52px}
+  .athlete-schedule-note{padding:18px;border-left:0;border-top:1px solid rgba(34,63,153,.12);overflow:visible}
+  .athlete-schedule-note textarea{min-height:150px}
+  .athlete-schedule-note .planner-edit-actions{display:grid;grid-template-columns:1fr;gap:10px}
+  .athlete-schedule-note .planner-edit-actions .btn{width:100%}
+  .coach-portal{display:block}
+  .coach-dashboard{display:block;overflow:visible}
+  .coach-day-sidebar{border-right:0;border-bottom:1px solid rgba(34,63,153,.12);overflow:visible}
+  .coach-stat-grid div{padding:14px}
+  .coach-stat-grid b{font-size:1.65rem}
+  .coach-month-row{height:auto;min-height:56px;padding:0 18px}
+  .coach-day-list{display:flex;overflow-x:auto;gap:10px;padding:12px 16px}
+  .coach-day-list button{grid-template-columns:56px 1fr;min-width:245px;border-left:0;border-bottom:4px solid transparent;border-radius:18px;border:1px solid rgba(34,63,153,.08);padding:14px}
+  .coach-day-list button.is-selected{border-left:1px solid rgba(34,63,153,.08);border-bottom-color:var(--blue2)}
+  .coach-main-panel{overflow:visible}
+  .coach-selected-head{height:auto;display:grid;grid-template-columns:1fr;gap:14px;padding:18px}
+  .coach-counts{justify-content:stretch}
+  .coach-counts b{width:100%;min-height:64px}
+  .coach-attendance-columns{grid-template-columns:1fr;padding:18px;gap:20px}
+  .coach-athlete-card{grid-template-columns:44px 1fr auto;gap:12px;padding:14px}
+  .coach-athlete-card>small{grid-column:2/-1;white-space:normal}
+  .coach-athlete-card>u{grid-column:3;grid-row:1}
+  .coach-day-summary{gap:14px}
+  .coach-season-table{overflow-x:auto}
+}
+@media(max-width:420px){
+  .athlete-calendar-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .athlete-calendar-card{min-height:148px;padding:14px}
+  .athlete-calendar-card strong{font-size:2.35rem}
+  .athlete-day-attendance{grid-template-columns:1fr}
+  .athlete-day-attendance-date{border-right:0;border-bottom:1px solid #dfe5f1}
+  .athlete-practice-row{grid-template-columns:1fr;gap:10px;min-height:0;padding:16px}
+  .athlete-practice-row.is-active,.athlete-practice-row.is-active.is-attending{padding-right:16px}
+  .athlete-practice-row.is-active:after{position:static;justify-self:start;margin-top:4px}
+  .practice-row-date{border-right:0;border-bottom:1px solid #dfe5f1;padding:0 0 10px}
+  .practice-row-check{right:18px;top:18px;transform:none}
+  .coach-day-stat-grid{grid-template-columns:1fr}
+  .coach-day-list button{min-width:220px}
+  .coach-athlete-card{grid-template-columns:40px 1fr}
+  .coach-athlete-card>small,.coach-athlete-card>u{grid-column:2}
+}
+
 /* Practice Planner Concepts */
 .concept-page{background:radial-gradient(circle at 86% 4%,rgba(237,28,42,.11),transparent 24%),linear-gradient(135deg,#fff 0%,#f5faff 55%,#eaf7ff 100%)}
 .concept-page-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:22px}
