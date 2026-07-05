@@ -162,6 +162,7 @@ export default function PracticePlannerContent() {
   const [selectedDates, setSelectedDates] = useState<string[]>([]);
   const [savedSelectedDates, setSavedSelectedDates] = useState<string[]>([]);
   const [isEditingAttendance, setIsEditingAttendance] = useState(false);
+  const [isEditingNote, setIsEditingNote] = useState(false);
   const [calendarView, setCalendarView] = useState<CalendarView>("grid");
   const [selectedAthleteName, setSelectedAthleteName] = useState("");
   const [newAthleteName, setNewAthleteName] = useState("");
@@ -205,15 +206,15 @@ export default function PracticePlannerContent() {
     [selectedDates, selectedMonthKey]
   );
   const existingCoachNote = useMemo(() => {
-    if (!selectedAthleteName || !profile.email) return "";
+    if (!selectedAthleteName || !profile.email || !selectedDate) return "";
 
     return scheduleEntries.find((entry) => (
       entry.email === profile.email &&
       entry.athleteName === selectedAthleteName &&
-      savedSelectedDates.includes(entry.dateKey) &&
+      entry.dateKey === selectedDate &&
       entry.message.trim()
     ))?.message ?? "";
-  }, [profile.email, savedSelectedDates, scheduleEntries, selectedAthleteName]);
+  }, [profile.email, scheduleEntries, selectedAthleteName, selectedDate]);
   const selectedAthleteShortName = selectedAthleteName.split(" ")[0] || selectedAthleteName;
 
   useEffect(() => {
@@ -301,6 +302,11 @@ export default function PracticePlannerContent() {
       listener.subscription.unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    if (!isEditingAttendance && !isEditingNote) return;
+    setMessage(existingCoachNote);
+  }, [existingCoachNote, isEditingAttendance, isEditingNote, selectedAthleteName, selectedDate]);
 
   const handleProfileChange = (field: keyof PlannerProfile, value: string) => {
     setProfile((currentProfile) => ({ ...currentProfile, [field]: value }));
@@ -451,6 +457,7 @@ export default function PracticePlannerContent() {
     setProfile(nextProfile);
     setSelectedAthleteName(athleteName);
     setIsEditingAttendance(false);
+    setIsEditingNote(false);
     setNewAthleteName("");
 
     if (supabase) {
@@ -467,6 +474,11 @@ export default function PracticePlannerContent() {
   const handleScheduleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const submitter = (event.nativeEvent as SubmitEvent).submitter as HTMLElement | null;
+    if (submitter?.dataset.action === "save-note") {
+      handleNoteSubmit();
+      return;
+    }
+
     if (submitter?.dataset.action !== "save-attendance") return;
     if (!isEditingAttendance || !isSignedIn || !selectedAthleteName) return;
 
@@ -475,6 +487,11 @@ export default function PracticePlannerContent() {
       const attendanceId = `${profile.email}-${selectedAthleteName}-${dateKey}`
         .toLowerCase()
         .replace(/[^a-z0-9-]+/g, "-");
+      const savedEntryForDate = scheduleEntries.find((entry) => (
+        entry.email === profile.email &&
+        entry.athleteName === selectedAthleteName &&
+        entry.dateKey === dateKey
+      ));
 
       return {
         id: attendanceId,
@@ -486,7 +503,7 @@ export default function PracticePlannerContent() {
         dateKey,
         dateLabel: day?.label ?? dateKey,
         time: practiceTime,
-        message,
+        message: dateKey === selectedDate ? message : savedEntryForDate?.message ?? "",
         createdAt: new Date().toISOString(),
       };
     });
@@ -501,9 +518,10 @@ export default function PracticePlannerContent() {
         setScheduleEntries(savedEntries);
         setSavedSelectedDates(selectedDates);
         setIsEditingAttendance(false);
+        setIsEditingNote(false);
         setScheduleError("");
         setScheduleSuccess(`Attendance saved for ${selectedDates.length} practice day${selectedDates.length === 1 ? "" : "s"}.`);
-        setMessage("");
+        setMessage(existingCoachNote);
       })
       .catch(() => {
         setScheduleSuccess("");
@@ -513,15 +531,106 @@ export default function PracticePlannerContent() {
 
   const handleStartAttendanceEdit = () => {
     setScheduleSuccess("");
+    setIsEditingNote(false);
     setMessage(existingCoachNote);
     setIsEditingAttendance(true);
   };
 
   const handleCancelAttendanceEdit = () => {
     setSelectedDates(savedSelectedDates);
-    setMessage("");
+    setMessage(existingCoachNote);
     setScheduleSuccess("");
     setIsEditingAttendance(false);
+  };
+
+  const handleStartNoteEdit = () => {
+    if (!selectedAthleteName || !savedSelectedDates.includes(selectedDate)) return;
+
+    setScheduleSuccess("");
+    setIsEditingAttendance(false);
+    setMessage(existingCoachNote);
+    setIsEditingNote(true);
+  };
+
+  const handleCancelNoteEdit = () => {
+    setMessage(existingCoachNote);
+    setScheduleSuccess("");
+    setIsEditingNote(false);
+  };
+
+  const handleNoteSubmit = () => {
+    if (!isEditingNote || !isSignedIn || !selectedAthleteName || !selectedDate) return;
+
+    if (!savedSelectedDates.includes(selectedDate)) {
+      setScheduleSuccess("");
+      setScheduleError("Add this athlete to the selected practice day before saving a note.");
+      return;
+    }
+
+    const visiblePracticeDayKeys = practiceDays.map((practiceDay) => practiceDay.key);
+    const savedEntriesForAthlete = scheduleEntries.filter((entry) => (
+      entry.email === profile.email &&
+      entry.athleteName === selectedAthleteName &&
+      visiblePracticeDayKeys.includes(entry.dateKey)
+    ));
+    const existingEntryForSelectedDate = savedEntriesForAthlete.find((entry) => entry.dateKey === selectedDate);
+    const selectedPracticeDay = practiceDays.find((practiceDay) => practiceDay.key === selectedDate);
+    const attendanceId = `${profile.email}-${selectedAthleteName}-${selectedDate}`
+      .toLowerCase()
+      .replace(/[^a-z0-9-]+/g, "-");
+    const noteEntry = {
+      id: existingEntryForSelectedDate?.id ?? attendanceId,
+      parentName: profile.parentName,
+      athleteName: selectedAthleteName,
+      email: profile.email,
+      phone: profile.phone,
+      visitType: practiceAttendanceType,
+      dateKey: selectedDate,
+      dateLabel: selectedPracticeDay?.label ?? selectedDate,
+      time: practiceTime,
+      message,
+      createdAt: existingEntryForSelectedDate?.createdAt ?? new Date().toISOString(),
+    };
+    const nextEntries = savedSelectedDates.map((dateKey) => {
+      const savedEntryForDate = savedEntriesForAthlete.find((entry) => entry.dateKey === dateKey);
+      const day = practiceDays.find((practiceDay) => practiceDay.key === dateKey);
+      const id = `${profile.email}-${selectedAthleteName}-${dateKey}`
+        .toLowerCase()
+        .replace(/[^a-z0-9-]+/g, "-");
+
+      if (dateKey === selectedDate) return noteEntry;
+
+      return savedEntryForDate ?? {
+        id,
+        parentName: profile.parentName,
+        athleteName: selectedAthleteName,
+        email: profile.email,
+        phone: profile.phone,
+        visitType: practiceAttendanceType,
+        dateKey,
+        dateLabel: day?.label ?? dateKey,
+        time: practiceTime,
+        message: "",
+        createdAt: new Date().toISOString(),
+      };
+    });
+
+    replaceSupabasePracticeScheduleEntriesForAthlete(
+      profile.email,
+      selectedAthleteName,
+      visiblePracticeDayKeys,
+      nextEntries
+    )
+      .then((savedEntries) => {
+        setScheduleEntries(savedEntries);
+        setIsEditingNote(false);
+        setScheduleError("");
+        setScheduleSuccess(`Note saved for ${selectedDay?.monthDay ?? "this practice day"}.`);
+      })
+      .catch(() => {
+        setScheduleSuccess("");
+        setScheduleError("Could not save the note yet. The scheduling database still needs setup.");
+      });
   };
 
   return (
@@ -684,6 +793,7 @@ export default function PracticePlannerContent() {
                   onClick={() => {
                     setSelectedAthleteName(athleteName);
                     setIsEditingAttendance(false);
+                    setIsEditingNote(false);
                     setScheduleSuccess("");
                     setMessage("");
                   }}
@@ -861,13 +971,13 @@ export default function PracticePlannerContent() {
               </div>
               {scheduleError ? <p className="planner-setup-note">{scheduleError}</p> : null}
               {scheduleSuccess ? <p className="planner-success-note">{scheduleSuccess}</p> : null}
-              <label>Private note for coaches</label>
+              <label>{selectedDay ? `Private note for ${selectedDay.monthDay}` : "Private note for coaches"}</label>
               <textarea
-                disabled={!isEditingAttendance}
+                disabled={!isEditingNote}
                 name="message"
-                value={message}
+                value={isEditingNote ? message : existingCoachNote}
                 onChange={(event) => setMessage(event.target.value)}
-                placeholder={isEditingAttendance ? "Optional note for coaches..." : "Notes are only shown to coaches."}
+                placeholder={isEditingNote ? "Optional note for this practice day..." : "No note saved for this practice day."}
               ></textarea>
               <div className="planner-edit-actions">
                 {isEditingAttendance ? (
@@ -882,7 +992,7 @@ export default function PracticePlannerContent() {
                 ) : (
                   <button
                     className="btn red"
-                    disabled={!selectedAthleteName || Boolean(scheduleError)}
+                    disabled={!selectedAthleteName || isEditingNote || Boolean(scheduleError)}
                     type="button"
                     onClick={(event) => {
                       event.preventDefault();
@@ -891,6 +1001,29 @@ export default function PracticePlannerContent() {
                     }}
                   >
                     Edit Attendance
+                  </button>
+                )}
+                {isEditingNote ? (
+                  <>
+                    <button className="btn red" data-action="save-note" disabled={!isSignedIn || !selectedAthleteName || Boolean(scheduleError)} type="submit">
+                      {scheduleError ? "Database Setup Needed" : "Save Note"}
+                    </button>
+                    <button className="btn" type="button" onClick={handleCancelNoteEdit}>
+                      Cancel Note
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    className="btn"
+                    disabled={!selectedAthleteName || isEditingAttendance || !savedSelectedDates.includes(selectedDate) || Boolean(scheduleError)}
+                    type="button"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      handleStartNoteEdit();
+                    }}
+                  >
+                    {existingCoachNote ? "Edit Note" : "Add Note"}
                   </button>
                 )}
               </div>
