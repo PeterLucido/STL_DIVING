@@ -29,9 +29,13 @@
 @media(max-width:850px){.brand img{width:82px!important;max-height:72px!important}}
 
 /* Final header logo + photo block fix */
-.brand img{width:104px!important;height:78px!important;max-height:none!important;object-fit:contain!important;background:transparent!important;border-radius:0!important;box-shadow:none!important}.brand{gap:0!important;background:transparent!important}.topbar .brand{padding:0!important}.nav{min-height:92px}
+.brand img{width:88px!important;height:62px!important;max-height:none!important;object-fit:contain!important;background:transparent!important;border-radius:0!important;box-shadow:none!important}.brand{gap:0!important;background:transparent!important}.topbar .brand{padding:0!important}.nav{min-height:78px}
+.topbar .wrap.nav{width:100%;max-width:none;padding-left:56px;padding-right:56px}
+.topbar .navlinks{gap:22px;font-size:.96rem;font-weight:850;color:#43506f}
+.topbar .navlinks a{white-space:nowrap}
+.topbar .navlinks .cta{padding:11px 18px;box-shadow:0 12px 24px rgba(237,28,42,.18)}
 .photo-block.real-photo{height:430px!important;min-height:430px!important;overflow:hidden!important;border-radius:38px!important;background:transparent!important;box-shadow:var(--shadow)!important}.photo-block.real-photo img{width:100%!important;height:100%!important;display:block!important;object-fit:cover!important;border-radius:38px!important}.photo-block.real-photo:before,.photo-block.real-photo:after{display:none!important;content:""!important}
-@media(max-width:850px){.brand img{width:90px!important;height:68px!important}.nav{min-height:80px}.photo-block.real-photo{height:280px!important;min-height:280px!important}}
+@media(max-width:850px){.brand img{width:76px!important;height:56px!important}.nav{min-height:68px}.topbar .wrap.nav{padding-left:18px;padding-right:18px}.topbar .navlinks{gap:12px;font-size:.9rem}.photo-block.real-photo{height:280px!important;min-height:280px!important}}
 
 
 
@@ -243,22 +247,61 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
 
 /* Practice Planner */
 .planner-hero{background:radial-gradient(circle at 82% 8%,rgba(237,28,42,.12),transparent 26%),linear-gradient(135deg,#fff 0%,#edf6ff 58%,#dff2ff 100%);border-bottom:1px solid rgba(34,63,153,.1)}
+.planner-login-hero .planner-hero-grid{min-height:calc(100vh - 94px)}
 .planner-hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:36px;align-items:center;padding:76px 0}
 .planner-hero h1{font-size:clamp(2.6rem,5.8vw,5.4rem);line-height:.96;margin:18px 0;color:var(--blue2);letter-spacing:-.06em}
 .planner-name-list{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:28px;color:#5d6b86}
 .planner-name-list span{font-weight:850;color:#4b5a78}
 .planner-name-list b{display:inline-flex;padding:9px 12px;border-radius:999px;background:#fff;border:1px solid rgba(34,63,153,.12);color:var(--blue);box-shadow:0 10px 24px rgba(13,32,77,.07)}
 .planner-login-card,.planner-submit-card{background:#fff;border:1px solid rgba(34,63,153,.11);border-radius:32px;padding:28px;box-shadow:var(--shadow)}
+.planner-card-copy{margin:0;color:#5d6b86;font-weight:800;line-height:1.5}
+.planner-card-cta{width:100%;margin-top:18px}
+.planner-card-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
 .planner-card-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px}
 .planner-card-head span{color:var(--blue2);font-size:1.1rem;font-weight:950}
 .planner-card-head button{border:1px solid rgba(34,63,153,.14);background:#f4f8ff;color:var(--blue);border-radius:999px;padding:8px 12px;font-weight:900;cursor:pointer}
 .planner-login-form{display:grid;gap:8px}
 .planner-login-form label,.planner-options label{font-size:.88rem;font-weight:900;color:#34405a}
 .planner-login-form input,.planner-login-form select,.planner-options select{width:100%;padding:13px 14px;border:1px solid #d7deeb;border-radius:16px;background:#fbfdff;font:inherit}
+.planner-login-form input:disabled{opacity:.72;cursor:not-allowed}
+.planner-auth-switch{border:0;background:transparent;color:var(--blue);font:inherit;font-weight:950;text-align:center;cursor:pointer;padding:7px 0}
+.planner-auth-switch:disabled{opacity:.55;cursor:not-allowed}
+.planner-check-email{display:grid;gap:14px}
+.planner-check-email h2{margin:4px 0 0;color:var(--blue2);font-size:clamp(2rem,3.2vw,3.1rem);line-height:1;letter-spacing:-.04em}
+.planner-check-email p{margin:0;color:#52617c;font-size:1.05rem;line-height:1.6;font-weight:750}
+.planner-check-email strong{color:var(--blue2)}
 .planner-profile-summary{display:grid;gap:8px;padding:20px;border-radius:22px;background:linear-gradient(135deg,#eef6ff,#fff);border:1px solid rgba(34,63,153,.12)}
 .planner-profile-summary strong{color:var(--blue2);font-size:1.35rem}
 .planner-profile-summary span{color:#52617c;font-weight:750}
-.planner-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+.planner-account-kids{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.planner-account-kids button{border:1px solid rgba(34,63,153,.14);background:#fff;color:var(--blue);border-radius:999px;padding:9px 12px;font-weight:950;cursor:pointer}
+.planner-account-kids button.is-selected{background:var(--blue);border-color:var(--blue);color:#fff}
+.planner-add-kid-form{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:14px}
+.planner-add-kid-form input{width:100%;padding:13px 14px;border:1px solid #d7deeb;border-radius:16px;background:#fbfdff;font:inherit}
+.planner-selected-athlete{margin-top:14px;background:linear-gradient(135deg,#fff8f9,#fff)}
+.planner-section{background:radial-gradient(circle at 88% 2%,rgba(237,28,42,.09),transparent 24%),linear-gradient(135deg,#fff 0%,#f3f9ff 58%,#eaf7ff 100%)}
+.planner-dashboard-shell{background:rgba(255,255,255,.72);border:1px solid rgba(34,63,153,.1);border-radius:34px;padding:28px;box-shadow:0 24px 58px rgba(13,32,77,.08);backdrop-filter:blur(8px)}
+.planner-workspace-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:18px}
+.planner-workspace-head h1{font-size:clamp(2.4rem,4.6vw,4.45rem);line-height:.96;margin:12px 0 10px;color:var(--blue2);letter-spacing:-.055em}
+.planner-workspace-head .sub{max-width:720px}
+.planner-workspace-head .btn{flex:0 0 auto}
+.planner-athlete-panel{display:grid;grid-template-columns:minmax(180px,.65fr) 1.15fr minmax(260px,.9fr);gap:14px;align-items:center;margin-bottom:24px;padding:16px;border-radius:24px;background:#fff;border:1px solid rgba(34,63,153,.1);box-shadow:0 14px 34px rgba(13,32,77,.06)}
+.planner-account-meta{display:grid;gap:4px}
+.planner-account-meta strong{color:var(--blue2);font-size:1.05rem}
+.planner-account-meta span{color:#52617c;font-weight:800;overflow-wrap:anywhere}
+.planner-athlete-tabs{display:flex;gap:10px;overflow-x:auto;padding:2px}
+.planner-athlete-tabs button{border:1px solid rgba(34,63,153,.14);background:#fff;color:var(--blue);border-radius:999px;padding:11px 16px;font-weight:950;cursor:pointer;white-space:nowrap}
+.planner-athlete-tabs button.is-selected{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 12px 24px rgba(34,63,153,.18)}
+.planner-athlete-add-form{margin:0}
+.planner-tabs-section{background:#f4f8ff;border-bottom:1px solid rgba(34,63,153,.09)}
+.planner-tabs{display:flex;gap:8px;padding:18px 0;overflow-x:auto}
+.planner-tabs button{border:1px solid rgba(34,63,153,.14);background:#fff;color:#52617c;border-radius:999px;padding:11px 16px;font-weight:950;cursor:pointer;white-space:nowrap}
+.planner-tabs button.is-active{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 12px 24px rgba(34,63,153,.18)}
+.planner-login-panel{max-width:720px;margin:0 auto;background:#fff;border:1px solid rgba(34,63,153,.11);border-radius:28px;padding:28px;box-shadow:var(--shadow)}
+.planner-login-panel h2{font-size:clamp(1.8rem,3.4vw,3rem);line-height:1.02;margin:12px 0 20px;color:var(--blue2);letter-spacing:-.04em}
+.planner-tab-actions{margin-top:18px}
+.planner-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.planner-dashboard-panel{background:#fff;border:1px solid rgba(34,63,153,.1);border-radius:28px;padding:24px;box-shadow:0 14px 34px rgba(13,32,77,.06)}
 .planner-section-head{margin-bottom:20px}
 .practice-day-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .practice-day{min-height:96px;border:1px solid rgba(34,63,153,.14);border-radius:20px;background:#fff;box-shadow:0 12px 28px rgba(13,32,77,.07);display:grid;place-items:center;padding:14px;cursor:pointer;color:var(--blue2)}
@@ -267,34 +310,338 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
 .practice-day em{font-style:normal;font-size:.78rem;font-weight:900;color:#6b7891}
 .practice-day.is-selected{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 18px 36px rgba(34,63,153,.22)}
 .practice-day.is-selected span,.practice-day.is-selected strong,.practice-day.is-selected em{color:#fff}
+.practice-day.is-readonly{cursor:pointer}
+.practice-day.is-readonly:not(.is-selected){background:rgba(255,255,255,.72)}
+.practice-day.is-readonly:focus-visible{outline:3px solid rgba(34,63,153,.24);outline-offset:3px}
 .planner-options{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.planner-options-single{grid-template-columns:1fr}
 .planner-options label{display:grid;gap:8px}
 .planner-submit-card h2{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.02;margin:12px 0 16px;color:var(--blue2);letter-spacing:-.04em}
 .planner-summary-list{display:grid;gap:10px;margin:18px 0}
 .planner-summary-list div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 14px;border-radius:16px;background:#f5f9ff;border:1px solid rgba(34,63,153,.09)}
 .planner-summary-list b{color:var(--blue2)}
 .planner-summary-list span{color:#52617c;font-weight:800;text-align:right}
+.planner-summary-list .planner-days-summary{display:grid;grid-template-columns:auto 1fr;align-items:start}
+.selected-day-pills{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:7px;text-align:right}
+.selected-day-pills em{font-style:normal;display:inline-flex;padding:6px 9px;border-radius:999px;background:#fff;border:1px solid rgba(34,63,153,.12);color:#52617c;font-weight:900;line-height:1}
 .planner-submit-card .btn:disabled{opacity:.55;cursor:not-allowed}
-.day-roster-card{margin-top:18px;padding:18px;border-radius:24px;background:#fff;border:1px solid rgba(34,63,153,.11);box-shadow:0 12px 28px rgba(13,32,77,.07)}
+.planner-submit-card textarea:disabled{background:#f7faff;color:#6b7891;cursor:not-allowed}
+.planner-edit-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px}
+.planner-edit-actions .btn{min-width:160px}
+.planner-setup-note,.planner-success-note{margin:14px 0 16px!important;padding:14px 16px;border-radius:16px;font-weight:850;line-height:1.45}
+.planner-setup-note{color:#7a4b00!important;background:#fff8e8;border:1px solid rgba(180,116,0,.18)}
+.planner-success-note{color:#126237!important;background:#eefaf2;border:1px solid rgba(18,98,55,.16)}
+.day-roster-card{margin-top:18px;padding:18px;border-radius:22px;background:#f8fbff;border:1px solid rgba(34,63,153,.09);box-shadow:none}
 .day-roster-list,.admin-roster-list{display:grid;gap:10px}
 .roster-row,.admin-roster-entry{padding:14px;border-radius:18px;background:#f5f9ff;border:1px solid rgba(34,63,153,.09)}
-.roster-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+.roster-row{display:block}
 .roster-row b,.admin-roster-entry b{color:var(--blue2)}
 .roster-row span,.admin-roster-entry span{color:#52617c;font-weight:800}
 .admin-roster-card{position:sticky;top:108px}
 .admin-roster-entry div{display:flex;justify-content:space-between;gap:12px;align-items:center}
 .admin-roster-entry p{margin:9px 0 0;color:#5d6b86;line-height:1.45}
 .error-text{color:var(--red)!important}
+
+/* Practice Portal Dashboard */
+.athlete-portal,.coach-portal{height:calc(100dvh - 94px);min-height:0;overflow:hidden;background:#f3f5fb;color:var(--blue2)}
+.athlete-portal{display:grid;grid-template-columns:300px 1fr}
+.athlete-portal-sidebar{display:grid;grid-template-rows:auto 1fr;border-right:1px solid rgba(34,63,153,.12);background:#fff;min-height:0;overflow:hidden}
+.athlete-portal-brand{padding:28px 24px 26px;border-bottom:1px solid rgba(34,63,153,.12)}
+.athlete-portal-brand h1{font-size:1.65rem;line-height:1.04;margin:12px 0 8px;color:var(--blue2);letter-spacing:-.025em}
+.athlete-portal-brand p,.athlete-portal-topbar p{margin:0;color:#6b7891;font-weight:850}
+.athlete-sidebar-section{padding:24px;min-height:0;overflow:auto}
+.athlete-sidebar-section>span,.portal-kicker,.coach-topbar>span,.coach-selected-head span,.coach-season-overview>span{display:block;text-transform:uppercase;letter-spacing:.16em;color:#6b7891;font-size:.78rem;font-weight:950}
+.athlete-list{display:grid;gap:10px;margin-top:18px}
+.athlete-list button{width:100%;display:grid;grid-template-columns:46px 1fr auto;gap:12px;align-items:center;border:1px solid transparent;background:#fff;border-radius:18px;padding:12px 14px;text-align:left;cursor:pointer;color:var(--blue2)}
+.athlete-list button b,.practice-row-attendees b,.coach-athlete-card>b,.coach-season-row em{display:grid;place-items:center;width:38px;height:38px;border-radius:999px;background:#f2f5fb;color:var(--blue);font-size:.85rem;font-weight:950}
+.athlete-list button span{font-weight:950}
+.athlete-list button em{font-style:normal;color:var(--blue);font-weight:950}
+.athlete-list button.is-selected{border-color:rgba(34,63,153,.18);background:#f5f7fc;box-shadow:inset 3px 0 0 var(--blue)}
+.athlete-list button.is-selected b,.practice-row-attendees b{background:var(--blue);color:#fff}
+.athlete-add-inline{display:grid;grid-template-columns:1fr 46px;gap:8px;margin-top:20px}
+.athlete-add-inline input{min-width:0;padding:12px 14px;border:1px solid #dbe2ef;border-radius:16px;background:#fbfdff;font:inherit}
+.athlete-add-inline button{border:1px dashed #d6deee;background:#fff;border-radius:999px;color:var(--blue);font-size:1.35rem;font-weight:800;cursor:pointer}
+.athlete-portal-main{display:grid;grid-template-rows:auto 1fr;min-width:0;min-height:0;overflow:hidden}
+.athlete-portal-topbar{display:grid;grid-template-columns:minmax(220px,1fr) minmax(620px,auto);align-items:center;gap:20px;min-height:78px;padding:20px 28px;background:#fff;border-bottom:1px solid rgba(34,63,153,.12)}
+.athlete-portal-topbar h1{margin:0;color:var(--blue2);font-size:1.65rem;line-height:1.05;letter-spacing:-.025em}
+.athlete-topbar-actions{display:grid;grid-template-columns:190px auto 310px;align-items:center;justify-content:end;gap:18px}
+.athlete-topbar-actions .portal-kicker{white-space:nowrap}
+.athlete-month-nav{display:grid;grid-template-columns:38px 190px 38px;align-items:center;gap:12px;color:var(--blue)}
+.athlete-month-nav b{font-size:1.25rem;text-align:center;white-space:nowrap}
+.athlete-month-nav span{color:#b6c1d5;font-size:1.8rem}
+.athlete-month-nav button{display:grid;place-items:center;width:38px;height:38px;border:0;background:transparent;color:var(--blue);font:inherit;font-weight:950;font-size:1.2rem;cursor:pointer;padding:0}
+.athlete-month-nav button:disabled{opacity:.3;cursor:not-allowed}
+.athlete-portal-content{display:grid;grid-template-columns:1fr 340px;min-height:0;overflow:hidden}
+.athlete-schedule-list{display:grid;grid-template-rows:auto 1fr;gap:14px;padding:28px 34px;min-width:0;min-height:0;overflow:hidden}
+.athlete-calendar-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}
+.athlete-calendar-scroll{min-height:0;overflow-y:auto;overflow-x:hidden;margin:-4px -10px 0 -8px;padding:4px 10px 18px 8px}
+.athlete-view-toggle{display:flex;border:1px solid #dbe2ef;border-radius:999px;background:#fff;overflow:hidden;box-shadow:0 8px 20px rgba(13,32,77,.04)}
+.athlete-view-toggle button{border:0;background:transparent;color:#6b7891;padding:8px 14px;font-weight:950;cursor:pointer}
+.athlete-view-toggle button.is-selected{background:var(--blue2);color:#fff}
+.athlete-calendar-grid{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:14px}
+.athlete-calendar-card{position:relative;display:grid;grid-template-rows:auto auto auto 1fr;min-height:230px;border:1px solid #dfe5f1;border-radius:20px;background:#fff;color:var(--blue2);padding:22px;text-align:left;cursor:pointer;box-shadow:0 10px 24px rgba(13,32,77,.05);transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
+.athlete-calendar-card:hover{transform:translateY(-2px)}
+.athlete-calendar-card span{font-size:.82rem;text-transform:uppercase;letter-spacing:.16em;color:#6b7891;font-weight:950}
+.athlete-calendar-card strong{font-size:3.9rem;line-height:.95;margin-top:18px;letter-spacing:-.055em}
+.athlete-calendar-card em{font-style:normal;color:#6b7891;font-size:1.05rem;font-weight:900}
+.athlete-calendar-card i{align-self:end;display:flex;min-height:36px;margin-top:28px;font-style:normal}
+.athlete-calendar-card i b{display:grid;place-items:center;width:34px;height:34px;border-radius:999px;background:var(--blue2);color:#fff;border:2px solid #fff;font-size:.78rem;font-weight:950}
+.athlete-calendar-card i b+b{margin-left:-8px}
+.athlete-calendar-card small{position:absolute;right:22px;bottom:26px;color:#6b7891;font-size:1.05rem;font-weight:950}
+.athlete-calendar-card.is-attending{background:var(--blue2);border-color:var(--blue2);color:#fff;box-shadow:0 16px 30px rgba(22,38,102,.18)}
+.athlete-calendar-card.is-attending span,.athlete-calendar-card.is-attending em,.athlete-calendar-card.is-attending small{color:rgba(255,255,255,.72)}
+.athlete-calendar-card.is-attending i b{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.24)}
+.athlete-calendar-card.is-active:after{content:"Selected";position:absolute;right:18px;top:18px;border-radius:999px;background:var(--red);color:#fff;padding:5px 9px;font-size:.68rem;font-weight:950;text-transform:uppercase;letter-spacing:.08em}
+.athlete-calendar-card.is-active.is-attending:after{background:var(--red);color:#fff}
+.athlete-portal.is-editing .athlete-calendar-card.is-active:after{display:none}
+.athlete-calendar-card.is-draft{outline:3px solid rgba(34,63,153,.18);outline-offset:3px}
+.athlete-day-attendance{display:grid;grid-template-columns:150px 1fr;min-height:230px;border:1px solid #dfe5f1;border-radius:20px;background:#fff;overflow:hidden;box-shadow:0 10px 24px rgba(13,32,77,.04)}
+.athlete-day-attendance-date{display:grid;align-content:center;gap:6px;padding:24px 26px;border-right:1px solid #dfe5f1;color:var(--blue2)}
+.athlete-day-attendance-date span{font-size:.82rem;text-transform:uppercase;letter-spacing:.16em;color:#6b7891;font-weight:950}
+.athlete-day-attendance-date strong{font-size:3.5rem;line-height:.9;letter-spacing:-.055em}
+.athlete-day-attendance-date em{font-style:normal;color:#6b7891;font-weight:900}
+.athlete-day-attendance-list{display:grid;align-content:start;gap:12px;padding:24px 28px}
+.athlete-day-attendance-list>b{color:#20a85a;text-transform:uppercase;letter-spacing:.14em;font-size:.82rem;font-weight:950}
+.athlete-day-attendance-list p{margin:0;color:#6b7891;font-weight:800}
+.athlete-day-attendee{display:flex;align-items:center;gap:12px;color:var(--blue2);font-weight:950}
+.athlete-day-attendee i{display:grid;place-items:center;width:38px;height:38px;border-radius:999px;background:var(--blue2);color:#fff;font-style:normal;font-size:.85rem;font-weight:950}
+.athlete-day-attendee em{font-style:normal;color:#20a85a;font-weight:950}
+.athlete-timeline{position:relative;display:grid;gap:10px;margin:0;padding-left:54px}
+.athlete-timeline:before{content:"";position:absolute;left:27px;top:18px;bottom:18px;width:2px;background:#dfe5f1}
+.athlete-practice-row{position:relative;display:grid;grid-template-columns:110px 1fr auto;gap:18px;align-items:center;min-height:86px;border:1px solid #dfe5f1;border-radius:18px;background:#fff;padding:18px 24px;color:var(--blue2);text-align:left;cursor:pointer;box-shadow:0 8px 22px rgba(13,32,77,.04)}
+.athlete-practice-row.is-active{padding-right:132px}
+.athlete-practice-row.is-active.is-attending{padding-right:176px}
+.timeline-node{position:absolute;left:-36px;top:50%;width:18px;height:18px;border-radius:999px;background:#fff;border:3px solid #dfe5f1;transform:translateY(-50%);z-index:1}
+.athlete-practice-row.is-attending{background:var(--blue2);border-color:var(--blue2);color:#fff;box-shadow:0 14px 28px rgba(22,38,102,.18)}
+.athlete-practice-row.is-attending .timeline-node{background:var(--blue2);border-color:var(--blue2)}
+.athlete-practice-row.is-active:after{content:"Selected";position:absolute;right:18px;top:14px;border-radius:999px;background:var(--red);color:#fff;padding:5px 9px;font-size:.68rem;font-weight:950;text-transform:uppercase;letter-spacing:.08em}
+.athlete-practice-row.is-active.is-attending:after{background:var(--red);color:#fff}
+.athlete-portal.is-editing .athlete-practice-row.is-active:after{display:none}
+.practice-row-date{display:grid;grid-template-columns:1fr;gap:3px;border-right:1px solid #dfe5f1;padding-right:16px}
+.practice-row-date em{font-style:normal;text-transform:uppercase;letter-spacing:.15em;color:#6b7891;font-size:.78rem;font-weight:950}
+.practice-row-date strong{font-size:1.45rem;line-height:1}
+.athlete-practice-row.is-attending .practice-row-date em,.athlete-practice-row.is-attending .practice-row-date strong{color:#fff}
+.athlete-practice-row.is-draft{outline:3px solid rgba(34,63,153,.18);outline-offset:3px}
+.practice-row-attendees{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:#6b7891;font-weight:900}
+.practice-row-attendees span{display:inline-flex;align-items:center;gap:8px}
+.practice-row-attendees i{font-style:normal;color:#9aa5ba}
+.practice-row-check{position:absolute;right:28px;top:50%;transform:translateY(-50%);font-size:1.3rem;color:inherit}
+.athlete-practice-row.is-active.is-attending:after{right:68px}
+.athlete-schedule-note{background:#fff;border-left:1px solid rgba(34,63,153,.12);padding:22px 18px;display:grid;align-content:start;gap:14px;min-height:0;overflow:auto}
+.athlete-note-summary{display:grid;gap:0;border:1px solid #dfe5f1;border-radius:18px;overflow:hidden;background:#f8fbff}
+.athlete-note-summary div{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;color:#6b7891;font-size:.95rem;font-weight:900}
+.athlete-note-summary div+div{border-top:1px solid #dfe5f1}
+.athlete-note-summary b,.athlete-note-summary span{color:var(--blue2)}
+.athlete-schedule-note label{font-weight:950;color:var(--blue2)}
+.athlete-schedule-note textarea{width:100%;min-height:210px;padding:14px;border:1px solid #dbe2ef;border-radius:18px;background:#fbfdff;font:inherit;resize:vertical}
+.athlete-schedule-note textarea:disabled{background:#f4f6fb;color:#8792aa;cursor:not-allowed}
+.athlete-schedule-note .planner-edit-actions{margin-top:0}
+.athlete-schedule-note .planner-edit-actions .btn{width:100%;min-width:0}
+
+.coach-portal{display:grid;grid-template-rows:1fr}
+.coach-topbar{height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:#f8f9fd;border-bottom:1px solid rgba(34,63,153,.12)}
+.coach-topbar div{display:flex;gap:0;border:1px solid #dbe2ef;border-radius:999px;overflow:hidden;background:#fff}
+.coach-topbar a,.coach-topbar button{border:0;background:#fff;color:#6b7891;padding:7px 18px;font-weight:950;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;cursor:pointer}
+.coach-topbar button{background:var(--blue2);color:#fff}
+.coach-dashboard{display:grid;grid-template-columns:380px 1fr;min-height:0;overflow:hidden}
+.coach-day-sidebar{background:#fff;border-right:1px solid rgba(34,63,153,.12);overflow:auto}
+.coach-stat-grid{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(34,63,153,.12)}
+.coach-stat-grid div{padding:18px;border-right:1px solid rgba(34,63,153,.12)}
+.coach-stat-grid div:last-child{border-right:0}
+.coach-stat-grid span{display:block;text-transform:uppercase;letter-spacing:.14em;color:#6b7891;font-size:.78rem;font-weight:950}
+.coach-stat-grid b{font-size:2rem;color:var(--blue2);line-height:1}
+.coach-stat-grid em{font-style:normal;color:#6b7891;font-weight:850;margin-left:5px}
+.coach-month-row{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid rgba(34,63,153,.12);color:var(--blue)}
+.coach-month-row button{border:0;background:transparent;color:var(--blue);font:inherit;font-weight:950;font-size:1.2rem;cursor:pointer;padding:8px}
+.coach-month-row button:disabled{opacity:.3;cursor:not-allowed}
+.coach-month-row b{font-size:1.25rem}
+.coach-day-list{display:grid}
+.coach-day-list button{display:grid;grid-template-columns:66px 1fr;gap:18px;align-items:center;border:0;border-left:4px solid transparent;background:#fff;padding:16px 20px;text-align:left;cursor:pointer;color:var(--blue2)}
+.coach-day-list button.is-selected{border-left-color:var(--blue2);background:#f1f4fa}
+.coach-date-box{display:grid;place-items:center;width:56px;height:56px;border-radius:16px;background:#f4f6fb;color:var(--blue2);font-weight:950}
+.coach-date-box em{font-style:normal;text-transform:uppercase;font-size:.72rem;letter-spacing:.1em;color:#6b7891}
+.coach-date-box b{white-space:pre-line;text-align:center;line-height:1.05}
+.coach-day-list button.is-selected .coach-date-box{background:var(--blue2);color:#fff}
+.coach-day-list button.is-selected .coach-date-box em{color:#fff}
+.coach-day-meta{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+.coach-day-meta strong{grid-column:1/-1;font-size:1rem}
+.coach-day-meta i{height:7px;border-radius:999px;background:#dfe5f1;overflow:hidden}
+.coach-day-meta i span{display:block;height:100%;border-radius:999px;background:#20a85a}
+.coach-day-meta small{color:#6b7891;font-weight:950}
+.coach-main-panel{min-width:0;min-height:0;overflow:auto}
+.coach-selected-head{height:110px;display:flex;justify-content:space-between;align-items:center;padding:24px 36px;background:#fff;border-bottom:1px solid rgba(34,63,153,.12)}
+.coach-selected-head h1{font-size:1.55rem;line-height:1.1;margin:6px 0 0;color:var(--blue2)}
+.coach-counts{display:flex;gap:12px}
+.coach-counts b{display:grid;place-items:center;min-width:82px;min-height:72px;border-radius:16px;background:#ddfae8;color:#20a85a;text-transform:uppercase;font-size:.8rem;letter-spacing:.06em}
+.coach-counts strong{display:block;font-size:2rem;line-height:1}
+.coach-attendance-columns{display:grid;grid-template-columns:minmax(420px,1fr) minmax(340px,420px);gap:26px;padding:28px 36px;align-items:start}
+.coach-attendance-columns h2{font-size:1rem;text-transform:uppercase;letter-spacing:.12em;color:#20a85a;margin:0 0 14px}
+.coach-card-list{display:grid;gap:12px}
+.coach-athlete-card{display:grid;grid-template-columns:48px 1fr auto auto;gap:14px;align-items:center;min-height:86px;border:1px solid #dfe5f1;border-radius:18px;background:#fff;padding:16px 18px}
+.coach-athlete-card span{display:grid;gap:3px}
+.coach-athlete-card strong{display:flex;align-items:center;gap:10px;color:var(--blue2)}
+.coach-athlete-card mark{border-radius:999px;background:#fff1c9;color:#df7b00;padding:4px 10px;font-size:.72rem;font-weight:950}
+.coach-athlete-card em{font-style:normal;color:#6b7891;font-weight:850}
+.coach-athlete-card span>i{display:block;height:7px;border-radius:999px;background:#dfe5f1;overflow:hidden}
+.coach-athlete-card span>i small{display:block;height:100%;border-radius:999px;background:var(--blue2)}
+.coach-athlete-card>small{color:#6b7891;font-weight:950;white-space:nowrap}
+.coach-athlete-card>u{display:grid;place-items:center;width:24px;height:24px;border-radius:999px;background:#20a85a;color:#fff;text-decoration:none;text-transform:uppercase;font-size:.62rem;font-weight:950}
+.coach-athlete-card.is-muted{opacity:.62}
+.coach-day-summary{display:grid;align-content:start;gap:12px;min-width:0}
+.coach-day-summary>span{display:block;text-transform:uppercase;letter-spacing:.16em;color:#6b7891;font-size:.78rem;font-weight:950}
+.coach-summary-card{display:grid;gap:8px;border:1px solid #dfe5f1;border-radius:18px;background:#fff;padding:18px;color:#6b7891;min-width:0}
+.coach-summary-card b{color:var(--blue2);text-transform:uppercase;letter-spacing:.12em;font-size:.78rem}
+.coach-summary-card strong{color:var(--blue2)}
+.coach-summary-card>strong{font-size:1.45rem;line-height:1}
+.coach-summary-card p{margin:0;line-height:1.45;font-weight:800}
+.coach-summary-card>i{display:block;height:8px;border-radius:999px;background:#dfe5f1;overflow:hidden}
+.coach-summary-card>i small{display:block;height:100%;border-radius:999px;background:#20a85a}
+.coach-day-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.coach-day-stat-grid .coach-summary-card{min-height:122px}
+.coach-day-stat-grid strong{font-size:2.25rem;line-height:1;color:#20a85a}
+.coach-note-card{background:#fffdf8}
+.coach-note-list{display:grid;gap:10px}
+.coach-note-list p{display:grid;gap:4px;padding:12px;border-radius:14px;background:#f6f8fd}
+.coach-status-banner{margin-top:18px;border:1px solid #9af2bf;border-radius:16px;background:#ddfae8;color:#20a85a;padding:16px 18px;font-weight:950}
+.coach-roster-card{gap:12px}
+.coach-roster-list{display:grid;gap:10px}
+.coach-roster-list span{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:12px;border-radius:14px;background:#f6f8fd}
+.coach-roster-list i{display:grid;place-items:center;width:34px;height:34px;border-radius:999px;background:var(--blue2);color:#fff;font-style:normal;font-weight:950}
+.coach-roster-list strong{font-size:.95rem}
+.coach-roster-list em{font-style:normal;color:#6b7891;font-weight:950}
+.coach-roster-list u{grid-column:1/-1;display:block;height:7px;border-radius:999px;background:#dfe5f1;overflow:hidden}
+.coach-roster-list u small{display:block;height:100%;border-radius:999px;background:var(--blue2)}
+.coach-season-overview{padding:0 36px 36px}
+.coach-season-table{margin-top:14px;border:1px solid #dfe5f1;border-radius:18px;overflow:auto;background:#fff;max-width:100%}
+.coach-season-table-compact{margin-top:0;border-radius:16px}
+.coach-season-head,.coach-season-row{display:grid;grid-template-columns:180px repeat(8,72px);min-width:max-content}
+.coach-season-head b,.coach-season-row>*{min-height:46px;display:flex;align-items:center;border-right:1px solid #dfe5f1;border-bottom:1px solid #dfe5f1;padding:0 10px}
+.coach-season-head b{background:#f7f9fd;color:#6b7891;text-transform:uppercase;font-size:.62rem;letter-spacing:.12em;justify-content:center;gap:2px;white-space:nowrap;line-height:1.05}
+.coach-season-head small{display:block;color:var(--blue2);font-size:.78rem;letter-spacing:0}
+.coach-season-row strong{gap:9px;color:var(--blue2)}
+.coach-season-row i{justify-content:center}
+.coach-season-row i:before{content:"";width:14px;height:14px;border-radius:999px;background:#dfe5f1}
+.coach-season-row i.is-in:before{background:var(--blue2)}
+.coach-season-table-compact .coach-season-head b,.coach-season-table-compact .coach-season-row>*{min-height:38px;padding:0 7px}
+.coach-season-table-compact .coach-season-head b{font-size:.62rem}
+.coach-season-table-compact .coach-season-row strong{font-size:.82rem;white-space:nowrap;overflow:hidden}
+.coach-season-table-compact .coach-season-row strong em{flex:0 0 auto}
+.coach-season-table-compact .coach-season-row i:before{width:11px;height:11px}
 @media(max-width:850px){
-  .planner-hero-grid,.planner-grid{grid-template-columns:1fr}
+  .planner-hero-grid,.planner-grid,.athlete-portal,.athlete-portal-content,.coach-dashboard,.coach-attendance-columns{grid-template-columns:1fr}
   .planner-hero-grid{padding:48px 0}
+  .planner-workspace-head{align-items:flex-start;flex-direction:column}
+  .planner-athlete-panel{grid-template-columns:1fr}
   .practice-day-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .admin-roster-card{position:static}
+  .athlete-portal-sidebar{grid-template-rows:auto auto auto;border-right:0;border-bottom:1px solid rgba(34,63,153,.12)}
+  .athlete-portal-content{display:grid}
+  .athlete-calendar-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .athlete-day-attendance{grid-template-columns:120px 1fr}
+  .athlete-schedule-note{border-left:0;border-top:1px solid rgba(34,63,153,.12)}
+  .coach-topbar{padding:0 16px}
 }
 @media(max-width:520px){
   .practice-day-grid,.planner-options{grid-template-columns:1fr 1fr}
+  .planner-options-single,.planner-card-actions{grid-template-columns:1fr}
+  .planner-add-kid-form{grid-template-columns:1fr}
   .planner-login-card,.planner-submit-card{padding:22px;border-radius:24px}
   .planner-summary-list div{display:grid;gap:4px}
+  .planner-summary-list .planner-days-summary{grid-template-columns:1fr}
   .planner-summary-list span{text-align:left}
+  .selected-day-pills{justify-content:flex-start;text-align:left}
   .roster-row,.admin-roster-entry div{display:grid;gap:4px}
+  .athlete-portal-topbar,.coach-selected-head{display:grid;grid-template-columns:1fr;height:auto}
+  .athlete-topbar-actions{grid-template-columns:1fr;justify-content:flex-start;gap:12px}
+  .athlete-month-nav{grid-template-columns:38px minmax(150px,190px) 38px}
+  .athlete-calendar-head{align-items:flex-start;flex-direction:column}
+  .athlete-calendar-grid{grid-template-columns:1fr}
+  .athlete-calendar-card{min-height:230px}
+  .athlete-day-attendance{grid-template-columns:1fr;min-height:230px}
+  .athlete-day-attendance-date{border-right:0;border-bottom:1px solid #dfe5f1}
+  .athlete-practice-row{grid-template-columns:1fr;gap:10px}
+  .athlete-timeline{padding-left:0}
+  .athlete-timeline:before,.timeline-node{display:none}
+  .practice-row-date{border-right:0;border-bottom:1px solid #dfe5f1;padding:0 0 10px}
+}
+
+/* Practice Planner Concepts */
+.concept-page{background:radial-gradient(circle at 86% 4%,rgba(237,28,42,.11),transparent 24%),linear-gradient(135deg,#fff 0%,#f5faff 55%,#eaf7ff 100%)}
+.concept-page-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:22px}
+.concept-page-head h1{font-size:clamp(2.4rem,5vw,4.8rem);line-height:.96;margin:12px 0;color:var(--blue2);letter-spacing:-.055em}
+.concept-switcher{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:22px}
+.concept-switcher button{border:1px solid rgba(34,63,153,.14);background:#fff;color:#52617c;border-radius:18px;padding:12px;font-weight:950;cursor:pointer;text-align:left;box-shadow:0 10px 24px rgba(13,32,77,.05)}
+.concept-switcher button span{display:inline-grid;place-items:center;width:26px;height:26px;margin-right:8px;border-radius:999px;background:#eef3ff;color:var(--blue)}
+.concept-switcher button.is-selected{background:var(--blue);border-color:var(--blue);color:#fff}
+.concept-switcher button.is-selected span{background:#fff;color:var(--blue)}
+.concept-screen{min-height:720px;border:1px solid rgba(34,63,153,.1);border-radius:34px;padding:28px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+.concept-screen h1,.concept-screen h2{color:var(--blue2);letter-spacing:-.045em}
+.concept-screen h1{font-size:clamp(2.4rem,4.6vw,4.5rem);line-height:.95;margin:10px 0}
+.concept-screen h2{font-size:clamp(1.7rem,3vw,2.6rem);line-height:1;margin:8px 0 16px}
+.concept-screen p{margin:0;color:#60708c;font-weight:750;line-height:1.55}
+.concept-head-row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.concept-panel{background:rgba(255,255,255,.86);border:1px solid rgba(34,63,153,.1);border-radius:28px;padding:24px;box-shadow:0 14px 34px rgba(13,32,77,.07)}
+.concept-two-col{display:grid;grid-template-columns:1.08fr .92fr;gap:22px;align-items:start;margin-top:24px}
+.concept-day-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.concept-day{min-height:96px;border:1px solid rgba(34,63,153,.12);border-radius:20px;background:#fff;color:var(--blue2);display:grid;place-items:center;padding:14px;cursor:pointer;box-shadow:0 12px 28px rgba(13,32,77,.07)}
+.concept-day span{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:950;color:#6b7891}
+.concept-day strong{font-size:1.3rem;color:var(--blue2)}
+.concept-day.is-selected{background:var(--blue);border-color:var(--blue);color:#fff}
+.concept-day.is-selected span,.concept-day.is-selected strong{color:#fff}
+.concept-day.is-compact{min-height:70px;grid-template-columns:56px 1fr;place-items:center start;text-align:left}
+.concept-athlete-strip{display:grid;grid-template-columns:1fr 1fr 1.6fr auto;gap:14px;align-items:center;margin-top:20px;padding:14px;border-radius:24px;background:#fff;border:1px solid rgba(34,63,153,.1);box-shadow:0 12px 30px rgba(13,32,77,.06)}
+.concept-athlete-strip button,.concept-vertical-tabs button,.concept-mini-actions button,.concept-pill-tabs button,.concept-clipboard-grid aside button{border:1px solid rgba(34,63,153,.14);background:#fff;color:var(--blue);border-radius:999px;padding:10px 15px;font-weight:950;cursor:pointer}
+.concept-athlete-strip button.is-selected,.concept-vertical-tabs button.is-selected,.concept-mini-actions button.is-selected,.concept-pill-tabs button.is-selected,.concept-clipboard-grid aside button.is-selected{background:var(--blue);border-color:var(--blue);color:#fff}
+.concept-athlete-strip input,.concept-sidebar input,.concept-clipboard-grid input{width:100%;padding:14px 16px;border-radius:18px;border:1px solid #d7deeb;background:#fbfdff;font:inherit}
+.concept-summary-card textarea,.concept-inline-save textarea,.concept-note-save textarea{width:100%;min-height:150px;margin:16px 0 18px;padding:14px 16px;border-radius:18px;border:1px solid #d7deeb;background:#fbfdff;font:inherit}
+.concept-selected-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.concept-selected-list span{display:inline-flex;padding:8px 11px;border-radius:999px;background:#f5f9ff;border:1px solid rgba(34,63,153,.12);color:#52617c;font-weight:950}
+.concept-athlete-first{display:grid;grid-template-columns:320px 1fr;gap:22px;background:linear-gradient(135deg,#f9fbff,#eef6ff)}
+.concept-sidebar{background:#fff;border-radius:28px;padding:24px;border:1px solid rgba(34,63,153,.1);box-shadow:0 14px 34px rgba(13,32,77,.07)}
+.concept-vertical-tabs{display:grid;gap:10px;margin:22px 0}
+.concept-main-card{background:#fff;border-radius:28px;padding:24px;border:1px solid rgba(34,63,153,.1);box-shadow:0 14px 34px rgba(13,32,77,.07)}
+.concept-wide-days{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.concept-bottom-bar{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(34,63,153,.1)}
+.concept-table{background:#fff}
+.concept-mini-actions{display:flex;gap:8px;flex-wrap:wrap}
+.concept-table-card{margin-top:24px;border:1px solid rgba(34,63,153,.12);border-radius:24px;overflow:hidden;background:#fff}
+.concept-table-row{width:100%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-items:center;padding:16px 20px;border:0;border-bottom:1px solid rgba(34,63,153,.09);background:#fff;text-align:left;font:inherit;cursor:pointer}
+.concept-table-row.is-head{background:#f5f9ff;color:var(--blue2);font-weight:950}
+.concept-table-row strong{color:var(--blue2)}
+.concept-table-row em{font-style:normal;color:#52617c;font-weight:850}
+.concept-table-row.is-selected{background:#eef5ff}
+.concept-table-row.is-selected em{color:var(--blue)}
+.concept-inline-save{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;margin-top:18px}
+.concept-inline-save textarea{min-height:86px;margin:0}
+.concept-board{background:#10245d;color:#fff}
+.concept-board h1,.concept-board h2,.concept-board p{color:#fff}
+.concept-board .tag{background:rgba(255,255,255,.12);color:#fff}
+.concept-board-head{display:flex;justify-content:space-between;gap:22px;align-items:flex-start;margin-bottom:22px}
+.concept-pill-tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.concept-month-board{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.concept-board .concept-day{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);box-shadow:none}
+.concept-board .concept-day span,.concept-board .concept-day strong{color:#fff}
+.concept-board .concept-day.is-selected{background:#ed1c2a;border-color:#ed1c2a}
+.concept-board-footer{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:22px;padding:18px;border-radius:24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.concept-board-footer .concept-selected-list span{background:#fff;color:var(--blue2)}
+.concept-clipboard{background:#f3f0ea}
+.concept-clipboard-paper{background:#fffdf8;border:1px solid rgba(41,34,20,.1);border-radius:28px;padding:28px;box-shadow:0 24px 55px rgba(41,34,20,.12)}
+.concept-clipboard-grid{display:grid;grid-template-columns:280px 1fr;gap:22px;margin-top:22px}
+.concept-clipboard-grid aside{display:grid;align-content:start;gap:10px;padding:18px;border-radius:20px;background:#f8f4eb;border:1px solid rgba(41,34,20,.08)}
+.concept-check-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.concept-check-list button{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid rgba(34,63,153,.12);background:#fff;border-radius:16px;padding:14px 16px;font:inherit;font-weight:950;color:var(--blue2);cursor:pointer}
+.concept-check-list button.is-selected{background:var(--blue);border-color:var(--blue);color:#fff}
+.concept-note-save{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;margin-top:20px}
+.concept-note-save textarea{min-height:90px;margin:0}
+@media(max-width:900px){
+  .concept-switcher{grid-template-columns:1fr 1fr}
+  .concept-two-col,.concept-athlete-first,.concept-clipboard-grid{grid-template-columns:1fr}
+  .concept-day-grid,.concept-month-board{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .concept-athlete-strip,.concept-inline-save,.concept-note-save{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .concept-page-head,.concept-head-row,.concept-board-head,.concept-board-footer,.concept-bottom-bar{display:grid}
+  .concept-switcher,.concept-day-grid,.concept-wide-days,.concept-month-board,.concept-check-list{grid-template-columns:1fr 1fr}
+  .concept-screen{padding:18px;border-radius:24px}
+  .concept-table-row{grid-template-columns:1fr}
 }

@@ -7,9 +7,10 @@ type Props = {
   title: string;
   description?: string;
   children: ReactNode;
+  hideFooter?: boolean;
 };
 
-export default function SiteLayout({ title, description, children }: Props) {
+export default function SiteLayout({ title, description, children, hideFooter = false }: Props) {
   return (
     <>
       <Head>
@@ -22,7 +23,7 @@ export default function SiteLayout({ title, description, children }: Props) {
       </Head>
       <Header />
       <div className="site-content">{children}</div>
-      <Footer />
+      {hideFooter ? null : <Footer />}
     </>
   );
 }

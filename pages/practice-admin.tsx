@@ -6,6 +6,7 @@ export default function PracticeAdminPage() {
     <SiteLayout
       title={"Practice Admin | STL Diving"}
       description="Coach view for STL Diving practice schedule submissions."
+      hideFooter
     >
       <PracticeAdminContent />
     </SiteLayout>

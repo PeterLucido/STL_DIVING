@@ -8,6 +8,7 @@
     "start": "next start -H 127.0.0.1 -p 8877"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.110.0",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
