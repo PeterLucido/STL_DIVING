@@ -125,6 +125,8 @@ function toSupabaseEntry(entry: PracticeScheduleEntry): SupabasePracticeSchedule
 }
 
 export async function loadSupabasePracticeScheduleEntries() {
+  if (!supabase) return [];
+
   const { data, error } = await supabase
     .from(practiceScheduleTableName)
     .select("*")
@@ -136,6 +138,8 @@ export async function loadSupabasePracticeScheduleEntries() {
 }
 
 export async function saveSupabasePracticeScheduleEntry(entry: PracticeScheduleEntry) {
+  if (!supabase) throw new Error("Supabase is not configured.");
+
   const { error } = await supabase
     .from(practiceScheduleTableName)
     .upsert(toSupabaseEntry(entry));
@@ -146,6 +150,8 @@ export async function saveSupabasePracticeScheduleEntry(entry: PracticeScheduleE
 }
 
 export async function saveSupabasePracticeScheduleEntries(entries: PracticeScheduleEntry[]) {
+  if (!supabase) throw new Error("Supabase is not configured.");
+
   const { error } = await supabase
     .from(practiceScheduleTableName)
     .upsert(entries.map(toSupabaseEntry));
@@ -161,6 +167,8 @@ export async function replaceSupabasePracticeScheduleEntriesForAthlete(
   visibleDateKeys: string[],
   entries: PracticeScheduleEntry[]
 ) {
+  if (!supabase) throw new Error("Supabase is not configured.");
+
   const selectedDateKeys = new Set(entries.map((entry) => entry.dateKey));
   const removedDateKeys = visibleDateKeys.filter((dateKey) => !selectedDateKeys.has(dateKey));
 

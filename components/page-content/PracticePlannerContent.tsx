@@ -258,7 +258,7 @@ export default function PracticePlannerContent() {
     setPracticeDays(days);
     setSelectedDate(days[0]?.key ?? "");
 
-    if (!hasSupabaseConfig) {
+    if (!hasSupabaseConfig || !supabase) {
       setAuthError("Supabase is not configured yet.");
       return;
     }
@@ -328,7 +328,7 @@ export default function PracticePlannerContent() {
     setIsAuthLoading(true);
     setAuthError("");
 
-    if (!hasSupabaseConfig) {
+    if (!hasSupabaseConfig || !supabase) {
       setIsAuthLoading(false);
       setAuthError("Supabase is not configured yet.");
       return;
@@ -372,7 +372,7 @@ export default function PracticePlannerContent() {
       supabaseConfigured: hasSupabaseConfig,
     });
 
-    if (!hasSupabaseConfig) {
+    if (!hasSupabaseConfig || !supabase) {
       setIsAuthLoading(false);
       setAuthError("Supabase is not configured yet.");
       console.warn("[PracticePlanner] Signup stopped: Supabase is not configured");
@@ -453,13 +453,15 @@ export default function PracticePlannerContent() {
     setIsEditingAttendance(false);
     setNewAthleteName("");
 
-    supabase.auth.updateUser({
-      data: {
-        parent_name: nextProfile.parentName,
-        athlete_names: nextProfile.athleteNames,
-        phone: nextProfile.phone,
-      },
-    });
+    if (supabase) {
+      supabase.auth.updateUser({
+        data: {
+          parent_name: nextProfile.parentName,
+          athlete_names: nextProfile.athleteNames,
+          phone: nextProfile.phone,
+        },
+      });
+    }
   };
 
   const handleScheduleSubmit = (event: FormEvent<HTMLFormElement>) => {
