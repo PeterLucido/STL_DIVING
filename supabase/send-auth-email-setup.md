@@ -33,6 +33,7 @@ MICROSOFT_CLIENT_SECRET=<Azure client secret value>
 MICROSOFT_SENDER=info@stldiving.com
 PROJECT_REF=zolysphyrrhgeecbdghs
 SEND_EMAIL_HOOK_SECRET=<Supabase Send Email Hook secret>
+AUTH_REDIRECT_TO=https://www.stldiving.com/practice-planner
 ```
 
 Do not commit real secret values.
@@ -52,6 +53,15 @@ HTTPS
 ```
 
 Use the generated hook secret as `SEND_EMAIL_HOOK_SECRET`.
+
+## Auth URL Configuration
+
+In Supabase, set:
+
+```text
+Site URL=https://www.stldiving.com
+Redirect URLs=https://www.stldiving.com/practice-planner
+```
 
 ## Deploy
 

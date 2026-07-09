@@ -28,6 +28,7 @@ const initialProfile: PlannerProfile = {
 const practiceTime = "5:30 PM";
 const practiceAttendanceType = "Practice attendance";
 const authTimeoutMessage = "Account creation is taking too long. The SMTP email step is probably timing out. Check Supabase SMTP, then try again.";
+const authRedirectTo = "https://www.stldiving.com/practice-planner";
 
 function getInitials(name: string) {
   return name
@@ -366,7 +367,6 @@ export default function PracticePlannerContent() {
     setIsAuthLoading(true);
     setAuthError("");
     const signupStartedAt = Date.now();
-    const signupRedirectTo = `${window.location.origin}/practice-planner`;
 
     console.info("[PracticePlanner] Signup started", {
       athleteCount: profile.athleteNames.length,
@@ -374,7 +374,7 @@ export default function PracticePlannerContent() {
       hasParentName: Boolean(profile.parentName),
       hasPhone: Boolean(profile.phone),
       passwordLength: accountPassword.length,
-      redirectTo: signupRedirectTo,
+      redirectTo: authRedirectTo,
       supabaseConfigured: hasSupabaseConfig,
     });
 
@@ -390,7 +390,7 @@ export default function PracticePlannerContent() {
         email: profile.email,
         password: accountPassword,
         options: {
-          emailRedirectTo: signupRedirectTo,
+          emailRedirectTo: authRedirectTo,
           data: {
             parent_name: profile.parentName,
             athlete_names: profile.athleteNames,

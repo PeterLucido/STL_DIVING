@@ -28,6 +28,7 @@ type SendEmailPayload = {
 
 const projectRef = Deno.env.get("PROJECT_REF") ?? "zolysphyrrhgeecbdghs";
 const sender = Deno.env.get("MICROSOFT_SENDER") ?? "info@stldiving.com";
+const authRedirectTo = Deno.env.get("AUTH_REDIRECT_TO") ?? "https://www.stldiving.com/practice-planner";
 
 const subjects: Record<EmailActionType, string> = {
   signup: "Confirm your STL Diving account",
@@ -43,7 +44,7 @@ function generateConfirmationUrl(emailData: SendEmailPayload["email_data"]) {
   const params = new URLSearchParams({
     token: emailData.token_hash,
     type: emailData.email_action_type,
-    redirect_to: emailData.redirect_to,
+    redirect_to: authRedirectTo,
   });
 
   return `https://${projectRef}.supabase.co/auth/v1/verify?${params.toString()}`;
