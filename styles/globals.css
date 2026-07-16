@@ -516,15 +516,15 @@ html,body{max-width:100%;overflow-x:hidden}img,svg,video{max-width:100%;height:a
 .coach-season-table-compact{margin-top:0;border-radius:16px}
 .coach-season-head,.coach-season-row{display:grid;grid-template-columns:180px repeat(8,72px);min-width:max-content}
 .coach-season-head b,.coach-season-row>*{min-height:46px;display:flex;align-items:center;border-right:1px solid #dfe5f1;border-bottom:1px solid #dfe5f1;padding:0 10px}
-.coach-season-head b{background:#f7f9fd;color:#6b7891;text-transform:uppercase;font-size:.62rem;letter-spacing:.12em;justify-content:center;gap:2px;white-space:nowrap;line-height:1.05}
-.coach-season-head small{display:block;color:var(--blue2);font-size:.78rem;letter-spacing:0}
-.coach-season-row strong{gap:9px;color:var(--blue2)}
+.coach-season-head b{background:#f7f9fd;color:#6b7891;text-transform:uppercase;font-size:.62rem;letter-spacing:.12em;justify-content:center;gap:5px;white-space:nowrap;line-height:1.05}
+.coach-season-head small{display:block;color:var(--blue2);font-size:.8rem;letter-spacing:0}
+.coach-season-row strong{gap:12px;color:var(--blue2);min-width:0}
 .coach-season-row i{justify-content:center}
 .coach-season-row i:before{content:"";width:14px;height:14px;border-radius:999px;background:#dfe5f1}
 .coach-season-row i.is-in:before{background:var(--blue2)}
-.coach-season-table-compact .coach-season-head b,.coach-season-table-compact .coach-season-row>*{min-height:38px;padding:0 7px}
-.coach-season-table-compact .coach-season-head b{font-size:.62rem}
-.coach-season-table-compact .coach-season-row strong{font-size:.82rem;white-space:nowrap;overflow:hidden}
+.coach-season-table-compact .coach-season-head b,.coach-season-table-compact .coach-season-row>*{min-height:46px;padding:0 12px}
+.coach-season-table-compact .coach-season-head b{font-size:.7rem}
+.coach-season-table-compact .coach-season-row strong{font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .coach-season-table-compact .coach-season-row strong em{flex:0 0 auto}
 .coach-season-table-compact .coach-season-row i:before{width:11px;height:11px}
 @media(max-width:850px){

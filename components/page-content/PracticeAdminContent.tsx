@@ -86,7 +86,7 @@ export default function PracticeAdminContent() {
   const selectedMonthIndex = availableMonthKeys.indexOf(selectedMonthKey);
   const canGoPreviousMonth = selectedMonthIndex > 0;
   const canGoNextMonth = selectedMonthIndex >= 0 && selectedMonthIndex < availableMonthKeys.length - 1;
-  const compactMonthGridTemplateColumns = `116px repeat(${Math.max(monthPracticeDays.length, 1)}, 44px)`;
+  const compactMonthGridTemplateColumns = `220px repeat(${Math.max(monthPracticeDays.length, 1)}, 76px)`;
 
   useEffect(() => {
     const days = buildPracticeDays();
